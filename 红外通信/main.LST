@@ -1,0 +1,145 @@
+C51 COMPILER V9.00   MAIN                                                                  05/25/2017 02:29:23 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "reg52.h"                       
+   2                  
+   3          typedef unsigned int u16;         
+   4          typedef unsigned char u8;
+   5          
+   6          sbit led1=P2^0;
+   7          sbit IRIN=P3^2;
+   8          sbit a=P1^4;
+   9          sbit b=P1^0;
+  10          u8 IrValue[6];
+  11          u8 Time;
+  12          //45h,46h,47h,44h,40h,43h,07h,15h,09h,16h,e4h,f3h,
+  13          //0ch,18h,5eh,08h,1ch,43h,4h,52h,4ah
+  14          void delay(u16 i)
+  15          {
+  16   1              while(i--);     
+  17   1      }
+  18          void delay2(u16 i)
+  19          {       u16 j;
+  20   1              for(i;i>0;i--)          
+  21   1                      for(j=100;j>0;j--);
+  22   1      }
+  23          
+  24          
+  25          
+  26          void IrInit()
+  27          {
+  28   1              IT0=1;
+  29   1              EX0=1;
+  30   1              EA=1;   
+  31   1      
+  32   1              IRIN=1;
+  33   1      }
+  34          void main()
+  35          {       
+  36   1              IrInit();
+  37   1              while(1)
+  38   1              {       
+  39   2              if((a==1)&&(b==1
+  40   2              ))
+  41   2              {
+  42   3              led1=0;
+  43   3              delay2(24000);
+  44   3              }
+  45   2              else
+  46   2              {led1=1;}
+  47   2      
+  48   2              if (((IrValue[2]/16)==4)&&((IrValue[2]%16)==5))
+  49   2              {
+  50   3              led1=0;delay2(24000);IrValue[2]=0;      
+  51   3              }                          
+  52   2              }
+  53   1                                 
+  54   1      }
+  55                          
+C51 COMPILER V9.00   MAIN                                                                  05/25/2017 02:29:23 PAGE 2   
+
+  56          
+  57          void ReadIr() interrupt 0
+  58          {
+  59   1              u8 j,k;
+  60   1              u16 err;
+  61   1              Time=0;                                  
+  62   1              delay(700);     
+  63   1              if(IRIN==0)             
+  64   1              {        
+  65   2                      
+  66   2                      err=1000;                               
+  67   2                      
+  68   2                      while((IRIN==0)&&(err>0))                       
+  69   2                      {                       
+  70   3                              delay(1);
+  71   3                              err--;
+  72   3                      } 
+  73   2                      if(IRIN==1)                     
+  74   2                      {
+  75   3                              err=500;
+  76   3                              while((IRIN==1)&&(err>0))               
+  77   3                              {
+  78   4                                      delay(1);
+  79   4                                      err--;
+  80   4                              }
+  81   3                              for(k=0;k<4;k++)        
+  82   3                              {                               
+  83   4                                      for(j=0;j<8;j++)        
+  84   4                                      {
+  85   5      
+  86   5                                              err=60;         
+  87   5                                              while((IRIN==0)&&(err>0))
+  88   5                                              {
+  89   6                                                      delay(1);
+  90   6                                                      err--;
+  91   6                                              }
+  92   5                                              err=500;
+  93   5                                              while((IRIN==1)&&(err>0))
+  94   5                                              {
+  95   6                                                      delay(10);
+  96   6                                                      Time++;
+  97   6                                                      err--;
+  98   6                                                      if(Time>30)
+  99   6                                                      {
+ 100   7                                                              return;
+ 101   7                                                      }
+ 102   6                                              }
+ 103   5                                              IrValue[k]>>=1;  
+ 104   5                                              if(Time>=8)                     
+ 105   5                                              {
+ 106   6                                                      IrValue[k]|=0x80;
+ 107   6                                              }
+ 108   5                                              Time=0;                                                                 
+ 109   5                                      }
+ 110   4                              }
+ 111   3                      }
+ 112   2                      if(IrValue[2]!=~IrValue[3])
+ 113   2                      {
+ 114   3                              return;
+ 115   3                      }
+ 116   2              }                       
+ 117   1      }
+C51 COMPILER V9.00   MAIN                                                                  05/25/2017 02:29:23 PAGE 3   
+
+ 118          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    330    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      7       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

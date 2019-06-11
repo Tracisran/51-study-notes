@@ -1,0 +1,13 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\软件资料\51单片机\C51\程序\红外通信\红外通信.uvproj
+Project File Date:  05/25/2017
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling main.c...
+--- Error: failed to execute 'C:\Keil\C51\BIN\C51.EXE'
+Target not created

@@ -1,0 +1,80 @@
+C51 COMPILER V9.00   MAIN                                                                  07/20/2018 19:31:05 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include"reg51.h"
+   2          
+   3          sbit Left_1_led =P2^0; //四路寻迹模块接口第一路 
+   4          sbit Left_2_led =P2^1; //四路寻迹模块接口第二路 
+   5          sbit Right_1_led =P2^2; //四路寻迹模块接口第三路 
+   6          sbit Right_2_led =P2^3; //四路寻迹模块接口第四路
+   7          sbit a = P1^1;
+   8          sbit b = P1^0;
+   9          sbit c = P1^2;
+  10          sbit d = P1^3;  
+  11          
+  12          
+  13          
+  14          void main(void) 
+  15          {
+  16   1              a=1;
+  17   1              b=0;
+  18   1      //while(1)
+  19   1      //{
+  20   1      //if((Left_1_led==0)&&(Left_2_led==0)&&(Right_1_led==0)&&(Right_2_led==0))
+  21   1      //{
+  22   1      //a=1;
+  23   1      //b=0;
+  24   1      //c=1;
+  25   1      //d=0;
+  26   1      //
+  27   1      //}
+  28   1      //if((Left_1_led==0)&&(Left_2_led==1)&&(Right_1_led==0)&&(Right_2_led==0))
+  29   1      //{
+  30   1      //a=1;
+  31   1      //b=0;
+  32   1      //c=0;
+  33   1      //d=1;
+  34   1      //
+  35   1      //}
+  36   1      //if((Left_1_led==1)&&(Left_2_led==1)&&(Right_1_led==1)&&(Right_2_led==1))
+  37   1      //{
+  38   1      //a=0;
+  39   1      //b=0;
+  40   1      //c=0;
+  41   1      //d=0;
+  42   1      //
+  43   1      //}
+  44   1      //if((Left_1_led==0)&&(Left_2_led==0)&&(Right_1_led==1)&&(Right_2_led==0))
+  45   1      //{
+  46   1      //a=0;
+  47   1      //b=1;
+  48   1      //c=1;
+  49   1      //d=0;
+  50   1      //
+  51   1      //}
+  52   1      //}
+  53   1      
+  54   1      
+  55   1      }
+C51 COMPILER V9.00   MAIN                                                                  07/20/2018 19:31:05 PAGE 2   
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      5    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

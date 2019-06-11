@@ -1,0 +1,147 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/16/2017  01:11:40  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE main.obj TO 舵机 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  main.obj (MAIN)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  舵机 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         _DATA_GROUP_
+            IDATA   000CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0068H     UNIT         ?PR?MAIN?MAIN
+            CODE    006BH     0029H     UNIT         ?PR?_DELAY?MAIN
+            CODE    0094H     000CH     UNIT         ?C_C51STARTUP
+            CODE    00A0H     000AH     UNIT         ?PR?DELAY2MS?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   舵机 (MAIN)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                  0008H    0004H
+  +--> ?PR?_DELAY?MAIN
+
+?PR?_DELAY?MAIN                -----    -----
+  +--> ?PR?DELAY2MS?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  舵机 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/16/2017  01:11:40  PAGE 2
+
+
+  D:00A8H         PUBLIC        IE
+  C:0076H         PUBLIC        _delay
+  D:00B8H         PUBLIC        IP
+  C:00A0H         PUBLIC        delay2ms
+  C:0003H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  B:0090H.1       PUBLIC        a
+  B:0090H.0       PUBLIC        b
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          L?0035
+  -------         ENDPROC       L?0035
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        i
+  -------         DO            
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:0076H         LINE#         6
+  C:0076H         LINE#         7
+  C:0076H         LINE#         9
+  C:007FH         LINE#         10
+  C:0093H         LINE#         11
+  -------         ENDPROC       _DELAY
+  -------         PROC          DELAY2MS
+  -------         DO            
+  D:0006H         SYMBOL        a
+  D:0007H         SYMBOL        b
+  -------         ENDDO         
+  C:00A0H         LINE#         12
+  C:00A0H         LINE#         13
+  C:00A0H         LINE#         15
+  C:00A2H         LINE#         16
+  C:00A8H         LINE#         17
+  C:00A9H         LINE#         18
+  -------         ENDPROC       DELAY2MS
+  -------         PROC          MAIN
+  -------         DO            
+  D:0002H         SYMBOL        d
+  -------         DO            
+  D:0008H         SYMBOL        j
+  D:000AH         SYMBOL        i
+  -------         ENDDO         
+  -------         ENDDO         
+  C:0003H         LINE#         22
+  C:0003H         LINE#         23
+  C:0003H         LINE#         24
+  C:0005H         LINE#         25
+  C:000BH         LINE#         26
+  C:000CH         LINE#         27
+  C:0010H         LINE#         28
+  C:0010H         LINE#         32
+  C:001BH         LINE#         33
+  C:001BH         LINE#         34
+  C:0021H         LINE#         36
+  C:002EH         LINE#         37
+  C:002EH         LINE#         38
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/16/2017  01:11:40  PAGE 3
+
+
+  C:002EH         LINE#         39
+  C:002EH         LINE#         40
+  C:002EH         LINE#         41
+  C:0031H         LINE#         42
+  C:0033H         LINE#         43
+  C:003DH         LINE#         44
+  C:0048H         LINE#         45
+  C:0048H         LINE#         46
+  C:004EH         LINE#         47
+  C:005BH         LINE#         48
+  C:005BH         LINE#         49
+  C:005BH         LINE#         50
+  C:005BH         LINE#         51
+  C:005BH         LINE#         52
+  C:005EH         LINE#         53
+  C:0060H         LINE#         54
+  C:006AH         LINE#         58
+  C:006AH         LINE#         60
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+Program Size: data=13.0 xdata=0 code=170
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
