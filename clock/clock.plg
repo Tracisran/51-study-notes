@@ -1,0 +1,270 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\user\Desktop\C51\³ÌÐò\clock\clock.uvproj
+Project File Date:  12/07/2017
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling main.c...
+main.c(2): warning C318: can't open file 'DS18B20_3.H'
+MAIN.C(530): warning C206: 'ReadTemperature': missing function-prototype
+MAIN.C(65): warning C290: missing return value
+MAIN.C(77): warning C290: missing return value
+MAIN.C(100): warning C290: missing return value
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 03F0H
+Program Size: data=20.0 xdata=0 code=1734
+"clock" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(2): warning C318: can't open file 'DS18B20.H'
+MAIN.C(530): warning C206: 'ReadTemperature': missing function-prototype
+MAIN.C(65): warning C290: missing return value
+MAIN.C(77): warning C290: missing return value
+MAIN.C(100): warning C290: missing return value
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 03F0H
+Program Size: data=20.0 xdata=0 code=1734
+"clock" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 03F0H
+Program Size: data=20.0 xdata=0 code=1734
+"clock" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 03F0H
+Program Size: data=20.0 xdata=0 code=1734
+"clock" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 03F0H
+Program Size: data=20.0 xdata=0 code=1734
+"clock" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 03F0H
+Program Size: data=20.0 xdata=0 code=1734
+"clock" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 03F0H
+Program Size: data=20.0 xdata=0 code=1734
+"clock" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  READTEMPERATURE
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 03F0H
+Program Size: data=20.0 xdata=0 code=1734
+"clock" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+C:\KEIL\C51\INC\DS18B20.H(27): error C141: syntax error near 'i', expected ')'
+C:\KEIL\C51\INC\DS18B20.H(29): error C141: syntax error near 'j'
+C:\KEIL\C51\INC\DS18B20.H(29): error C202: 'j': undefined identifier
+C:\KEIL\C51\INC\DS18B20.H(30): error C202: 'j': undefined identifier
+C:\KEIL\C51\INC\DS18B20.H(31): error C202: 'k': undefined identifier
+C:\KEIL\C51\INC\DS18B20.H(99): error C237: 'ReadOneChar': function already has a body
+C:\KEIL\C51\INC\DS18B20.H(114): error C237: '_WriteOneChar': function already has a body
+Target not created
+Build target 'Target 1'
+compiling main.c...
+C:\KEIL\C51\INC\DS18B20.H(99): error C237: 'ReadOneChar': function already has a body
+C:\KEIL\C51\INC\DS18B20.H(114): error C237: '_WriteOneChar': function already has a body
+Target not created
+Build target 'Target 1'
+compiling main.c...
+C:\KEIL\C51\INC\ATMEL\REGX52.H(15): error C231: 'P0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(16): error C231: 'SP': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(17): error C231: 'DPL': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(18): error C231: 'DPH': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(19): error C231: 'PCON': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(20): error C231: 'TCON': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(21): error C231: 'TMOD': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(22): error C231: 'TL0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(23): error C231: 'TL1': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(24): error C231: 'TH0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(25): error C231: 'TH1': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(26): error C231: 'P1': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(27): error C231: 'SCON': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(28): error C231: 'SBUF': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(29): error C231: 'P2': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(30): error C231: 'IE': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(31): error C231: 'P3': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(32): error C231: 'IP': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(39): error C231: 'PSW': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(40): error C231: 'ACC': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(41): error C231: 'B': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(70): error C231: 'IT0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(71): error C231: 'IE0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(72): error C231: 'IT1': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(73): error C231: 'IE1': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(74): error C231: 'TR0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(75): error C231: 'TF0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(76): error C231: 'TR1': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(77): error C231: 'TF1': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(112): error C231: 'RI': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(113): error C231: 'TI': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(114): error C231: 'RB8': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(115): error C231: 'TB8': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(116): error C231: 'REN': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(117): error C231: 'SM2': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(118): error C231: 'SM1': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(119): error C231: 'SM0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(136): error C231: 'EX0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(137): error C231: 'ET0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(138): error C231: 'EX1': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(139): error C231: 'ET1': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(140): error C231: 'ES': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(143): error C231: 'EA': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(157): error C231: 'RXD': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(158): error C231: 'TXD': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(159): error C231: 'INT0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(160): error C231: 'INT1': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(161): error C231: 'T0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(162): error C231: 'T1': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(163): error C231: 'WR': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(164): error C231: 'RD': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(169): error C231: 'PX0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(170): error C231: 'PT0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(171): error C231: 'PX1': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(172): error C231: 'PT1': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(173): error C231: 'PS': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(197): error C231: 'P': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(199): error C231: 'OV': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(200): error C231: 'RS0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(201): error C231: 'RS1': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(202): error C231: 'F0': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(203): error C231: 'AC': redefinition
+C:\KEIL\C51\INC\ATMEL\REGX52.H(204): error C231: 'CY': redefinition
+C:\KEIL\C51\INC\DS18B20.H(100): error C237: 'ReadOneChar': function already has a body
+C:\KEIL\C51\INC\DS18B20.H(115): error C237: '_WriteOneChar': function already has a body
+Target not created
+Build target 'Target 1'
+compiling main.c...
+C:\KEIL\C51\INC\DS18B20.H(99): error C237: 'ReadOneChar': function already has a body
+C:\KEIL\C51\INC\DS18B20.H(114): error C237: '_WriteOneChar': function already has a body
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(46): warning C235: parameter 1: different types
+MAIN.C(50): error C237: '_delay': function already has a body
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(46): warning C235: parameter 1: different types
+MAIN.C(50): error C237: '_delay': function already has a body
+Target not created
+Build target 'Target 1'
+compiling main.c...
+C:\KEIL\C51\INC\DS18B20.H(38): warning C206: 'delay': missing function-prototype
+C:\KEIL\C51\INC\DS18B20.H(38): error C267: 'delay': requires ANSI-style prototype
+MAIN.C(46): error C231: 'delay': redefinition
+MAIN.C(50): error C231: 'delay': redefinition
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(530): error C193: '=': illegal type conversion from/to 'void'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(530): error C193: '=': illegal type conversion from/to 'void'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(530): error C193: '=': illegal type conversion from/to 'void'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(530): error C193: '=': illegal type conversion from/to 'void'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+C:\KEIL\C51\INC\DS18B20.H(99): error C183: unmodifiable lvalue
+Target not created
+Build target 'Target 1'
+compiling main.c...
+C:\KEIL\C51\INC\DS18B20.H(99): error C193: '=': illegal type conversion from/to 'void'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+C:\KEIL\C51\INC\DS18B20.H(99): error C174: return-expression on void-function
+Target not created
+Build target 'Target 1'
+compiling main.c...
+C:\KEIL\C51\INC\DS18B20.H(99): error C174: return-expression on void-function
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(65): warning C290: missing return value
+MAIN.C(77): warning C290: missing return value
+MAIN.C(100): warning C290: missing return value
+linking...
+Program Size: data=27.1 xdata=0 code=2779
+"clock" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=27.1 xdata=0 code=2779
+"clock" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=27.1 xdata=0 code=2779
+"clock" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=27.1 xdata=0 code=2779
+"clock" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=27.1 xdata=0 code=2779
+"clock" - 0 Error(s), 0 Warning(s).

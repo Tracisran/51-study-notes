@@ -1,0 +1,19 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\user\Desktop\³ÌÐò\²â¾à\²â¾à.uvproj
+Project File Date:  05/23/2017
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling 51.C...
+linking...
+Program Size: data=34.1 xdata=0 code=484
+"²â¾à" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=34.1 xdata=0 code=484
+creating hex file from "²â¾à"...
+"²â¾à" - 0 Error(s), 0 Warning(s).

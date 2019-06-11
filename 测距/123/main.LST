@@ -1,0 +1,193 @@
+C51 COMPILER V9.00   MAIN                                                                  05/23/2017 14:54:22 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          void conut1(void)
+   2          {
+   3   1              time=TH1*256+TL1;
+*** ERROR C202 IN LINE 3 OF MAIN.C: 'time': undefined identifier
+   4   1              TH1=0;
+*** ERROR C202 IN LINE 4 OF MAIN.C: 'TH1': undefined identifier
+   5   1              TL1=0;
+*** ERROR C202 IN LINE 5 OF MAIN.C: 'TL1': undefined identifier
+   6   1              
+   7   1                             //此时time的时间单位决定于晶振的频率，外接晶振为11.0592MHZ
+   8   1                                     //那么1us声波能走多远的距离呢？1s=1000ms=1000000us 
+   9   1                                         // 340/1000000=0.00034米
+  10   1                                         //0.00034米/1000=0.34毫米  也就是1us能走0.34毫米
+  11   1                                         //但是，我们现在计算的是从超声波发射到反射接收的双路程，
+  12   1                                         //所以我们将计算的结果除以2才是实际的路程
+  13   1          S=time*0.17+10;//此时计算到的结果为毫米，并且是精确到毫米的后两位了，有两个小数点 
+*** ERROR C202 IN LINE 13 OF MAIN.C: 'S': undefined identifier
+  14   1      }
+  15          
+  16          void Conut(void)
+  17          {
+  18   1               
+  19   1          conut1();
+  20   1              //========显示部分===========================================
+  21   1              if((S>=5000)||flag==1) //超出测量范围
+*** ERROR C202 IN LINE 21 OF MAIN.C: 'S': undefined identifier
+  22   1              {
+  23   2                  a=0;        
+*** ERROR C202 IN LINE 23 OF MAIN.C: 'a': undefined identifier
+  24   2                  flag=0;
+*** ERROR C202 IN LINE 24 OF MAIN.C: 'flag': undefined identifier
+  25   2              DisplayListChar(0, 1, table1);
+  26   2              }
+  27   1              else
+  28   1              {
+  29   2              disbuff[0]=S%10;
+  30   2                  disbuff[1]=S/10%10;
+  31   2                  disbuff[2]=S/100%10;
+  32   2                  disbuff[3]=S/1000;
+  33   2                  DisplayListChar(0, 1, table);
+  34   2                  DisplayOneChar(9, 1, ASCII[disbuff[3]]);
+  35   2                  DisplayOneChar(10, 1, ASCII[disbuff[2]]);   
+  36   2                  DisplayOneChar(11, 1, ASCII[disbuff[1]]);
+  37   2              DisplayOneChar(12, 1, ASCII[10]);
+  38   2                  DisplayOneChar(13, 1, ASCII[disbuff[0]]);
+  39   2               }
+  40   1               //========避障部分===========================================
+  41   1               if(S<=240)      ////////////////////////////  刹车障碍物距离   跟车速有关 可更改
+  42   1               {      
+  43   2                    a++;
+  44   2                    if(a>=2)
+  45   2                    {
+  46   3                        a=0;
+  47   3                        FM=0;
+  48   3                            Stop();
+C51 COMPILER V9.00   MAIN                                                                  05/23/2017 14:54:22 PAGE 2   
+
+  49   3                            back();  //后退缓冲
+  50   3                            delay(230);//////////////////////////////////////////     后退缓冲时间 跟车速有关 可更改
+  51   3      
+  52   3                        B:Turn_Right();
+  53   3                              delay(50);                ///////////////////////////////////  旋转角度 跟环境复杂程度有关 可更改
+  54   3                              Stop();
+  55   3                              delay(100);             ////////////////////////////////////   旋转顿挫时间 视觉效果 可更改
+  56   3                              StartModule();                          
+  57   3                              while(RX==0);
+  58   3                              TR1=1;                      //开启计数
+  59   3                          while(RX);                  //当RX为1计数并等待
+  60   3                          TR1=0;                              //关闭计数
+  61   3                              conut1();
+  62   3      
+  63   3      
+  64   3                              if(S>340)        ////////////////////////        可直行方向无障碍物距离 跟环境有关 可更改
+  65   3                              {
+  66   4              
+  67   4                                  Turn_Right();
+  68   4                                  delay(90);  
+  69   4                              Stop();                           //微调前进方向 避免车宽对前进影响
+  70   4                                  delay(200);            
+  71   4                                  FM=1;
+  72   4                                  Forward();
+  73   4                              }               
+  74   3                              else
+  75   3                             {
+  76   4                                 goto B;                              //若没转到空旷方向 回到B点 继续旋转一次
+  77   4                             }
+  78   3                      
+  79   3                     }
+  80   2                     else
+  81   2                         {
+  82   3                         Forward();   //无障碍物 直行
+  83   3                     }
+  84   2              
+  85   2               }
+  86   1      
+  87   1               else
+  88   1               {
+  89   2                    a=0;
+  90   2                        Forward();       //无障碍物 直行
+  91   2               }
+  92   1               //=======================================
+  93   1               
+  94   1      }
+  95          
+  96          /********************************************************/
+  97          void zd0() interrupt 3           //T0中断用来计数器溢出,超过测距范围
+  98          {
+  99   1          flag=1;                      //中断溢出标志
+ 100   1              RX=0;
+ 101   1      }
+ 102          
+ 103          /********超声波高电平脉冲宽度计算程序***************/
+ 104          void Timer_Count(void)
+ 105          {
+ 106   1              TR1=1;                      //开启计数
+ 107   1              while(RX);                      //当RX为1计数并等待
+ 108   1              TR1=0;                          //关闭计数
+ 109   1          Conut();                    //计算
+ 110   1      
+C51 COMPILER V9.00   MAIN                                                                  05/23/2017 14:54:22 PAGE 3   
+
+ 111   1      }
+ 112          /********************************************************/
+ 113          void keyscan(void)              //按键扫描函数
+ 114          {
+ 115   1          A:    if(K4==0)                     //判断是否有按下信号
+ 116   1                      {
+ 117   2                          delay(10);            //延时10ms
+ 118   2                              if(K4==0)                       //再次判断是否按下
+ 119   2                               {
+ 120   3                                  FM=0;               //蜂鸣器响              
+ 121   3                                  while(K4==0);       //判断是否松开按键
+ 122   3                                  FM=1;               //蜂鸣器停止  
+ 123   3                               }
+ 124   2                          else
+ 125   2                           {
+ 126   3                             goto A;        //跳转到A重新检测
+ 127   3                            }
+ 128   2                      }
+ 129   1                      else
+ 130   1                      {
+ 131   2                        goto A;             //跳转到A重新检测
+ 132   2                      }
+ 133   1      } 
+ 134          /********************************************************/ 
+ 135          
+ 136          /*************主程序********************/
+ 137          void main(void)
+ 138          {
+ 139   1          
+ 140   1              unsigned int a;
+ 141   1              cmg88();//关数码管
+ 142   1              delay(400); //启动等待，等LCM讲入工作状态
+ 143   1              LCMInit(); //LCM初始化
+ 144   1              delay(5);//延时片刻
+ 145   1      
+ 146   1              DisplayListChar(0, 0, Range);
+ 147   1              DisplayListChar(0, 1, table);
+ 148   1          TMOD=TMOD|0x10;//设T0为方式1，GATE=1；
+ 149   1          EA=1;                                          //开启总中断
+ 150   1          TH1=0;
+ 151   1          TL1=0;          
+ 152   1          ET1=1;             //允许T0中断
+ 153   1          keyscan() ;  //按键扫描
+ 154   1      
+ 155   1      
+ 156   1              //=======================================================================================================
+             -================                      
+ 157   1              while(1)
+ 158   1              {
+ 159   2                      RX=1;
+ 160   2                  StartModule();                               //启动模块
+ 161   2              for(a=951;a>0;a--)
+ 162   2                  {
+ 163   3                         
+ 164   3                     if(RX==1)
+ 165   3                         {
+ 166   4                    Timer_Count();             //超声波高电平脉冲宽度计算函数
+ 167   4                         }
+ 168   3               }
+ 169   2              }
+ 170   1      } 
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  7 ERROR(S)
