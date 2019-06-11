@@ -1,0 +1,263 @@
+C51 COMPILER V9.00   MAIN                                                                  07/26/2018 19:09:30 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h> 
+   2          sbit Right_moto_pwm= P1^5; //接驱动模块ENA使能端输入PWM  
+   3          sbit Left_moto_pwm= P1^4; //接驱动模块ENB使能端输入PWM 
+   4          sbit Left_1_led =P2^0; //四路寻迹模块接口第一路 
+   5          sbit Left_2_led =P2^1; //四路寻迹模块接口第二路 
+   6          sbit Right_1_led =P2^2; //四路寻迹模块接口第三路 
+   7          sbit Right_2_led =P2^ 3; //四路寻迹模块接口第四路
+   8          sbit a = P1^0;
+   9          sbit b = P1^1;
+  10          sbit d = P1^2;
+  11          sbit c = P1^3;
+  12          int S[2]=0;
+  13          
+  14          #define Left_moto_go {a=0,b=1;} //左电机前进 
+  15          #define Left_moto_back {a=1,b=0;}; //左电机后退 
+  16          #define Left_moto_stop {a=1,b=1;}; //左电机停转 
+  17          #define Right_moto_go {c=0,d=1;}; //右电机前转 
+  18          #define Right_moto_back {c=1,d=0;}; //右电机后退 
+  19          #define Right_moto_stop {c=1,d=1;}; //右电机停转 
+  20          #define uchar unsigned char 
+  21          #define uint unsigned int 
+  22          uchar pwm_val_left =0; 
+  23          uchar push_val_left =0; //左电机占空比N/10 
+  24          uchar pwm_val_right =0; 
+  25          uchar push_val_right=0; //右电机占空比N/10 
+  26          bit Right_moto_stp=1; 
+  27          bit Left_moto_stp =1; 
+  28          /**************************************************************** 
+  29          ********/ 
+  30          void run(void) //前进函数 
+  31          { 
+  32   1      push_val_left =20; //PWM 调节参数1-20 1为最慢20是最快  
+  33   1      push_val_right=20 ; //PWM 调节参数1-20 1为最慢20是最快   
+  34   1      Left_moto_go ; //左电机前进 
+  35   1      Right_moto_go ; //右电机前进 
+  36   1      } 
+  37          /************************************************************************/ 
+  38          void left1(void) //左转函数 
+  39          { 
+  40   1      push_val_left =15; 
+  41   1      push_val_right =20; 
+  42   1      Right_moto_go;  
+  43   1      Left_moto_back;  
+  44   1      }
+  45          void left2(void)  
+  46          { 
+  47   1      push_val_left =20; 
+  48   1      push_val_right =20;
+  49   1       
+  50   1      Right_moto_go;  
+  51   1      Left_moto_back;  
+  52   1      }  
+  53          /************************************************************************/ 
+  54          void right1(void) //右转函数 
+  55          { 
+C51 COMPILER V9.00   MAIN                                                                  07/26/2018 19:09:30 PAGE 2   
+
+  56   1      push_val_left =20; 
+  57   1      push_val_right =15; 
+  58   1      Right_moto_back; 
+  59   1      Left_moto_go; 
+  60   1      }
+  61          void right2(void) 
+  62          { 
+  63   1      push_val_left =20; 
+  64   1      push_val_right =20; 
+  65   1      Right_moto_back; 
+  66   1      Left_moto_go;  
+  67   1      } 
+  68          void back(void) 
+  69          {
+  70   1      push_val_left =20; 
+  71   1      push_val_right =20; 
+  72   1      Right_moto_back; 
+  73   1      Left_moto_back; 
+  74   1      }
+  75          
+  76          void stop(void) 
+  77          { 
+  78   1      Right_moto_stop;
+  79   1      Left_moto_stop; 
+  80   1      
+  81   1      } 
+  82          
+  83          void Delayms(uint x) 
+  84          { 
+  85   1      uchar i; 
+  86   1      while(x--)for(i=0;i<120;i++); 
+  87   1      } 
+  88          /*************************PWM 调 制 电 机 转 速********************************/ 
+  89          void pwm_out_left_moto(void) //左电机调速,调节push_val_left的值改变电机转速,占空比 
+  90          { 
+  91   1      if(Left_moto_stp) 
+  92   1      { 
+  93   2      if(pwm_val_left<=push_val_left) 
+  94   2      Left_moto_pwm=1; 
+  95   2      else 
+  96   2      Left_moto_pwm=0;
+  97   2       if(pwm_val_left>=20) 
+  98   2      pwm_val_left=0; 
+  99   2      } 
+ 100   1      else 
+ 101   1      Left_moto_pwm=0; 
+ 102   1      } 
+ 103          void pwm_out_right_moto(void) //右电机调速,调节push_val_left的值改变电机转速,占空比 
+ 104          { 
+ 105   1      if(Right_moto_stp) 
+ 106   1      { 
+ 107   2      if(pwm_val_right<=push_val_right) 
+ 108   2      Right_moto_pwm=1; 
+ 109   2      else 
+ 110   2      Right_moto_pwm=0; 
+ 111   2      if(pwm_val_right>=20) 
+ 112   2      pwm_val_right=0; 
+ 113   2      } 
+ 114   1      else 
+ 115   1      Right_moto_pwm=0; 
+ 116   1      } 
+ 117          /***************************************************/ 
+C51 COMPILER V9.00   MAIN                                                                  07/26/2018 19:09:30 PAGE 3   
+
+ 118          void xunji() 
+ 119          { 
+ 120   1      switch(P2&0xff) 
+ 121   1      { 
+ 122   2      case 0xf0: // 全部没有压线直走   11110000
+ 123   2      S[0]=S[1];
+ 124   2      S[1]=0;
+ 125   2      run();
+ 126   2      break;
+ 127   2      case 0xf9:              //1111001
+ 128   2      S[0]=S[1];
+ 129   2      S[1]=1;
+ 130   2      run();
+ 131   2      break;  
+ 132   2      case 0xf1: // 右压线左转      11110001
+ 133   2      S[0]=S[1];
+ 134   2      S[1]=2;
+ 135   2      run();
+ 136   2      break; 
+ 137   2      case 0xf2: // 右压线左转      11110010
+ 138   2      S[0]=S[1];
+ 139   2      S[1]=3;
+ 140   2      right1(); 
+ 141   2      break;
+ 142   2      case 0xf3:              //                      11110011
+ 143   2      S[0]=S[1];
+ 144   2      S[1]=4;
+ 145   2      if(S[0]!=4)
+ 146   2      {
+ 147   3      back();
+ 148   3      Delayms(500);
+ 149   3      }
+ 150   2      else
+ 151   2      {
+ 152   3      right2();
+ 153   3      }
+ 154   2      right2();
+ 155   2      break;
+ 156   2      case 0xf7: // 右压线左转        11110111
+ 157   2      S[0]=S[1];
+ 158   2      S[1]=5;
+ 159   2      run(); 
+ 160   2      break; 
+ 161   2      case 0xf4: // 左压线转右               11110100
+ 162   2      S[0]=S[1];
+ 163   2      S[1]=6;
+ 164   2      left1(); 
+ 165   2      break; 
+ 166   2      case 0xf8: // 左压线右转                11111000
+ 167   2      S[0]=S[1];
+ 168   2      S[1]=7;
+ 169   2      run();
+ 170   2      break;
+ 171   2      case 0xfc:                                        // 11111100
+ 172   2      S[0]=S[1];
+ 173   2      S[1]=8;
+ 174   2      if(S[0]!=8)
+ 175   2      {
+ 176   3      back();
+ 177   3      Delayms(500);   
+ 178   3      }
+ 179   2      else
+C51 COMPILER V9.00   MAIN                                                                  07/26/2018 19:09:30 PAGE 4   
+
+ 180   2      {
+ 181   3      left2();
+ 182   3      }
+ 183   2      left2();
+ 184   2      break; 
+ 185   2      case 0xfe:                                        // 11111110
+ 186   2      S[0]=S[1];
+ 187   2      S[1]=9;
+ 188   2      run();
+ 189   2      break; 
+ 190   2      case 0xff:                                        // 11111111
+ 191   2      S[0]=S[1];
+ 192   2      S[1]=S[1];
+ 193   2      //run();
+ 194   2      break; 
+ 195   2      case 0xf6:                                      //11110110
+ 196   2      S[0]=S[1];
+ 197   2      S[1]=11;
+ 198   2      left1();
+ 199   2      break; 
+ 200   2      
+ 201   2      default: 
+ 202   2      S[0]=S[1];
+ 203   2      S[1]=12;
+ 204   2      run(); 
+ 205   2      break; 
+ 206   2      } 
+ 207   1      } 
+ 208          /***********TIMER0中断服务子函数产生PWM信号**********/ 
+ 209           void timer0()interrupt 1 using 2 
+ 210          { 
+ 211   1      TH0=0XF8;                               //2Ms定时 
+ 212   1      TL0=0X30; 
+ 213   1      pwm_val_left++; 
+ 214   1      pwm_val_right++; 
+ 215   1      pwm_out_left_moto(); 
+ 216   1      pwm_out_right_moto(); 
+ 217   1      } 
+ 218          /***************************************************/ 
+ 219          void main(void) 
+ 220          { 
+ 221   1      TMOD=0X01; 
+ 222   1      TH0= 0XF8; //2ms定时 
+ 223   1      TL0= 0X30; 
+ 224   1      TR0= 1; 
+ 225   1      ET0= 1; 
+ 226   1      EA = 1;
+ 227   1      
+ 228   1      while(1) /*无限循环*/ 
+ 229   1      { 
+ 230   2      xunji(); 
+ 231   2      } 
+ 232   1      } 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    528    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      8    ----
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.00   MAIN                                                                  07/26/2018 19:09:30 PAGE 5   
+
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
